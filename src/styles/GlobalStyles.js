@@ -91,9 +91,9 @@ const GlobalStyles = createGlobalStyle`
   --color-brand-900: #312e81;
   
   --border-radius-tiny: 3px;
-  --border-radius-sm: 5px;
-  --border-radius-md: 7px;
-  --border-radius-lg: 9px;
+  --border-radius-sm: 6px;
+  --border-radius-md: 10px;
+  --border-radius-lg: 14px;
 
 
 }
@@ -114,7 +114,10 @@ html {
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  body {
+  font-family: "Inter", sans-serif;
+}
+  /* font-family: "Poppins", sans-serif; */
   color: var(--color-grey-700);
 
   transition: color 0.3s, background-color 0.3s;
