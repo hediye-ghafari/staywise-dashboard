@@ -1,18 +1,10 @@
-import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
-import { useAuthActions } from "./useAuth";
+import { useAuthActions } from "./useAuthActions";
 
 export function useLogout() {
-  const navigate = useNavigate();
-  const { authService, clearUser } = useAuthActions();
+  const { logout } = useAuthActions();
 
-  const { mutate: logout, isLoading } = useMutation({
-    mutationFn: authService.logout,
-    onSuccess: () => {
-      clearUser();
-      navigate("/login", { replace: true });
-    },
-  });
-
-  return { logout, isLoading };
+  return {
+    logout: logout.mutate,
+    isLoading: logout.isLoading,
+  };
 }
