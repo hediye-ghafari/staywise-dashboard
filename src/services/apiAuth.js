@@ -35,6 +35,7 @@ export async function getCurrentUser() {
   const { data, error } = await supabase.auth.getUser();
 
   if (error) throw new Error(error.message);
+
   return data?.user;
 }
 
@@ -71,5 +72,16 @@ export async function updateCurrentUser({ password, fullName, avatar }) {
   });
 
   if (error2) throw new Error(error2.message);
+
   return updatedUser;
 }
+
+export const authService = {
+  signup,
+  login,
+  logout,
+  getCurrentUser,
+  updateCurrentUser,
+};
+
+export default authService;
