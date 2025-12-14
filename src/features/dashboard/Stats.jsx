@@ -6,22 +6,29 @@ import {
 } from "react-icons/hi2";
 import Stat from "./Stat";
 import { formatCurrency } from "../../utils/helpers";
+import EmptyState from "../../ui/EmptyState";
 
 function Stats({ bookings, confirmedStays, numDays, cabinCount }) {
-  // 1.
+  const hasData = bookings.length > 0 || confirmedStays.length > 0;
+
+  if (!hasData)
+    return (
+      <EmptyState
+        title="No dashboard data yet"
+        description="Once you have bookings or check-ins, key statistics will appear here."
+        icon={HiOutlineChartBar}
+      />
+    );
+
   const numBookings = bookings.length;
 
-  // 2.
   const sales = bookings.reduce((acc, cur) => acc + cur.totalPrice, 0);
 
-  // 3.
   const checkins = confirmedStays.length;
 
-  // 4.
   const occupation =
     confirmedStays.reduce((acc, cur) => acc + cur.numNights, 0) /
     (numDays * cabinCount);
-  // num checked in nights / all available nights (num days * num cabins)
 
   return (
     <>

@@ -1,7 +1,7 @@
 import BookingRow from "./BookingRow";
 import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
-import Empty from "../../ui/Empty";
+import EmptyState from "../../ui/EmptyState";
 
 import { useBookings } from "./useBookings";
 import Spinner from "../../ui/Spinner";
@@ -10,7 +10,13 @@ function BookingTable() {
   const { bookings, isLoading, count } = useBookings();
 
   if (isLoading) return <Spinner />;
-  if (!bookings.length) return <Empty resourceName="bookings" />;
+  if (!bookings.length)
+    return (
+      <EmptyState
+        title="No bookings yet"
+        description="Bookings will appear here once guests make reservations."
+      />
+    );
 
   return (
     <Menus>
