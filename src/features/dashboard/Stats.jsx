@@ -8,9 +8,12 @@ import {
 import Stat from "./Stat";
 import { formatCurrency } from "../../utils/helpers";
 import EmptyState from "../../ui/EmptyState";
+import MotionFade from "../../ui/MotionFade";
 
 function Stats({ bookings = [], confirmedStays = [], numDays, cabinCount }) {
-  if (bookings.length === 0 && confirmedStays.length === 0) {
+  const hasData = bookings.length > 0 || confirmedStays.length > 0;
+
+  if (!hasData) {
     return (
       <EmptyState
         title="No dashboard data yet"
@@ -34,33 +37,41 @@ function Stats({ bookings = [], confirmedStays = [], numDays, cabinCount }) {
 
   return (
     <>
-      <Stat
-        title="Bookings"
-        color="blue"
-        icon={<HiOutlineBriefcase />}
-        value={numBookings}
-      />
+      <MotionFade delay={0}>
+        <Stat
+          title="Bookings"
+          color="blue"
+          icon={<HiOutlineBriefcase />}
+          value={numBookings}
+        />
+      </MotionFade>
 
-      <Stat
-        title="Sales"
-        color="green"
-        icon={<HiOutlineBanknotes />}
-        value={formatCurrency(sales)}
-      />
+      <MotionFade delay={0.05}>
+        <Stat
+          title="Sales"
+          color="green"
+          icon={<HiOutlineBanknotes />}
+          value={formatCurrency(sales)}
+        />
+      </MotionFade>
 
-      <Stat
-        title="Check ins"
-        color="indigo"
-        icon={<HiOutlineCalendarDays />}
-        value={checkins}
-      />
+      <MotionFade delay={0.1}>
+        <Stat
+          title="Check ins"
+          color="indigo"
+          icon={<HiOutlineCalendarDays />}
+          value={checkins}
+        />
+      </MotionFade>
 
-      <Stat
-        title="Occupancy rate"
-        color="yellow"
-        icon={<HiOutlineChartBar />}
-        value={`${Math.round(occupation * 100)}%`}
-      />
+      <MotionFade delay={0.15}>
+        <Stat
+          title="Occupancy rate"
+          color="yellow"
+          icon={<HiOutlineChartBar />}
+          value={`${Math.round(occupation * 100)}%`}
+        />
+      </MotionFade>
     </>
   );
 }
