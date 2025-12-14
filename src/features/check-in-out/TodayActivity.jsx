@@ -4,9 +4,10 @@ import Heading from "../../ui/Heading";
 import Row from "../../ui/Row";
 
 import { useTodayActivity } from "./useTodayActivity";
-import Spinner from "../../ui/Spinner";
+
 import TodayItem from "./TodayItem";
 import EmptyState from "../../ui/EmptyState";
+import TodaySkeleton from "../../ui/TodaySkeleton";
 
 const StyledToday = styled.div`
   /* Box */
@@ -30,6 +31,7 @@ const TodayList = styled.ul`
   &::-webkit-scrollbar {
     width: 0 !important;
   }
+
   scrollbar-width: none;
   -ms-overflow-style: none;
 `;
@@ -43,22 +45,19 @@ function TodayActivity() {
         <Heading as="h2">Today</Heading>
       </Row>
 
-      {!isLoading ? (
-        activities?.length > 0 ? (
-          <TodayList>
-            {activities.map((activity) => (
-              <TodayItem activity={activity} key={activity.id} />
-            ))}
-          </TodayList>
-        ) : (
-          <EmptyState
-            icon="🕒"
-            title="No activity today"
-            description="Looks like there hasn’t been any activity yet."
-          />
-        )
+      {isLoading ? (
+        <TodaySkeleton />
+      ) : activities.length > 0 ? (
+        <TodayList>
+          {activities.map((activity) => (
+            <TodayItem key={activity.id} activity={activity} />
+          ))}
+        </TodayList>
       ) : (
-        <Spinner />
+        <EmptyState
+          title="No activity today"
+          description="Your daily activity will appear here."
+        />
       )}
     </StyledToday>
   );

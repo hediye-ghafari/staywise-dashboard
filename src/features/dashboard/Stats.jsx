@@ -16,7 +16,7 @@ function Stats({ bookings, confirmedStays, numDays, cabinCount }) {
       <EmptyState
         title="No dashboard data yet"
         description="Once you have bookings or check-ins, key statistics will appear here."
-        icon={HiOutlineChartBar}
+        icon={<HiOutlineChartBar />}
       />
     );
 
