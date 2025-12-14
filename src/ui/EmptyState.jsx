@@ -25,6 +25,28 @@ const StyledEmptyState = styled(motion.div)`
     color: var(--color-grey-500);
     font-size: 1.6rem;
   }
+
+  @media (max-width: 768px) {
+    padding: 3.2rem;
+    svg {
+      width: 3.2rem;
+      height: 3.2rem;
+    }
+    p {
+      font-size: 1.4rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    padding: 2.4rem;
+    svg {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+    p {
+      font-size: 1.2rem;
+    }
+  }
 `;
 
 const variants = {

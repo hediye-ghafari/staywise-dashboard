@@ -10,6 +10,12 @@ const StyledStatSkeleton = styled(motion.div)`
   display: grid;
   grid-template-columns: 6.4rem 1fr;
   gap: 1.6rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    justify-items: start;
+  }
 `;
 
 const containerVariants = {

@@ -10,24 +10,29 @@ import EmptyState from "../../ui/EmptyState";
 import TodaySkeleton from "../../ui/TodaySkeleton";
 
 const StyledToday = styled.div`
-  /* Box */
   background-color: var(--color-grey-0);
   border: 1px solid var(--color-grey-100);
   border-radius: var(--border-radius-md);
-
   padding: 3.2rem;
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
   grid-column: 1 / span 2;
-  padding-top: 2.4rem;
+
+  @media (max-width: 1024px) {
+    grid-column: 1 / -1;
+    padding: 2.4rem;
+  }
+
+  @media (max-width: 640px) {
+    padding: 1.6rem;
+  }
 `;
 
 const TodayList = styled.ul`
   overflow: scroll;
   overflow-x: hidden;
 
-  /* Removing scrollbars for webkit, firefox, and ms, respectively */
   &::-webkit-scrollbar {
     width: 0 !important;
   }
