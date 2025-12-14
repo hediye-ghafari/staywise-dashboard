@@ -1,41 +1,51 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import Heading from "./Heading";
-import Button from "./Button";
 
-const StyledEmpty = styled.div`
+const StyledEmptyState = styled(motion.div)`
+  background-color: var(--color-grey-0);
+  border: 1px dashed var(--color-grey-200);
+  border-radius: var(--border-radius-md);
+  padding: 4.8rem;
   text-align: center;
-  padding: 3.2rem;
-  color: var(--color-grey-500);
+  grid-column: 1 / -1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+
+  svg {
+    width: 4.8rem;
+    height: 4.8rem;
+    color: var(--color-grey-400);
+  }
+
+  p {
+    color: var(--color-grey-500);
+    font-size: 1.6rem;
+  }
 `;
 
-const Icon = styled.div`
-  font-size: 4.8rem;
-  margin-bottom: 1.6rem;
-`;
+const variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      ease: "easeOut",
+    },
+  },
+};
 
-const Description = styled.p`
-  font-size: 1.6rem;
-  margin-bottom: 2.4rem;
-`;
-
-function EmptyState({
-  icon = "📭",
-  title = "Nothing here yet",
-  description,
-  actionLabel,
-  onAction,
-}) {
+function EmptyState({ title, description, icon }) {
   return (
-    <StyledEmpty>
-      <Icon>{icon}</Icon>
+    <StyledEmptyState variants={variants} initial="hidden" animate="visible">
+      {icon}
       <Heading as="h3">{title}</Heading>
-      {description && <Description>{description}</Description>}
-      {actionLabel && onAction && (
-        <Button size="medium" onClick={onAction}>
-          {actionLabel}
-        </Button>
-      )}
-    </StyledEmpty>
+      <p>{description}</p>
+    </StyledEmptyState>
   );
 }
 
