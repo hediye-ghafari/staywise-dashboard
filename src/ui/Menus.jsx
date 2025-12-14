@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { createContext, useState } from "react";
 import { createPortal } from "react-dom";
 import { HiEllipsisVertical } from "react-icons/hi2";
@@ -73,6 +73,17 @@ function Menus({ children }) {
 
   const close = () => setopenId("");
   const open = setopenId;
+
+  useEffect(() => {
+    function handleWheel() {
+      if (openId) close();
+    }
+
+    window.addEventListener("wheel", handleWheel, { passive: true });
+
+    return () => window.removeEventListener("wheel", handleWheel);
+  }, [openId]);
+
   return (
     <MenuContext.Provider
       value={{ openId, open, close, position, setposition }}
