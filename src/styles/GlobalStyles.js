@@ -117,7 +117,7 @@ body {
   body {
   font-family: "Inter", sans-serif;
 }
-  /* font-family: "Poppins", sans-serif; */
+ 
   color: var(--color-grey-700);
 
   transition: color 0.3s, background-color 0.3s;

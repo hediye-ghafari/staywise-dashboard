@@ -22,9 +22,29 @@ const StyledAppLayout = styled.div`
 const Main = styled.main`
   background-color: var(--color-grey-50);
   padding: 4rem 4.8rem 6.4rem;
-  background-color: var(--color-grey-50);
-  padding: 4rem 4.8rem 6.4rem;
   overflow: scroll;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-grey-300);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--color-grey-50);
+  }
+
+  /* dark mode */
+  html[data-theme="dark"] &::-webkit-scrollbar-thumb {
+    background-color: var(--color-grey-700);
+  }
+
+  html[data-theme="dark"] &::-webkit-scrollbar-track {
+    background-color: var(--color-grey-900);
+  }
 
   @media (max-width: 1024px) {
     padding: 3rem;
