@@ -15,6 +15,7 @@ function SortBy({ options }) {
       type="white"
       value={sortBy}
       onChange={handleChange}
+      style={{ width: "100%" }}
     />
   );
 }
