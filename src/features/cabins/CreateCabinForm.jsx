@@ -147,7 +147,7 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
         >
           Cancel
         </Button>
-        <Button disabled={isWorking}>
+        <Button disabled={isWorking} variation="secondary">
           {isEditSession ? "Edit Cabin" : "Create new cabin"}
         </Button>
       </FormRow>
