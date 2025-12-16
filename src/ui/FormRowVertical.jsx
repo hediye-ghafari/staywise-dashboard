@@ -1,3 +1,5 @@
+import React from "react";
+
 import styled from "styled-components";
 
 const StyledFormRow = styled.div`
@@ -17,10 +19,16 @@ const Error = styled.span`
 `;
 
 function FormRowVertical({ label, error, children }) {
+  const id =
+    children.props.id ||
+    `form-row-${label?.toLowerCase().replace(/\s+/g, "-")}`;
+
+  const childWithId = React.cloneElement(children, { id });
+
   return (
     <StyledFormRow>
-      {label && <Label htmlFor={children.props.id}>{label}</Label>}
-      {children}
+      {label && <Label htmlFor={id}>{label}</Label>}
+      {childWithId}
       {error && <Error>{error}</Error>}
     </StyledFormRow>
   );
