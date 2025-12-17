@@ -6,6 +6,15 @@ This project demonstrates my ability to take an existing production-style codeba
 
 This project is designed as a portfolio-grade React application, showcasing real-world architecture, advanced state management, API integration, and clean UI patterns.
 
+## 🔑 Demo Access
+
+To access the dashboard, please use the demo credentials below:
+
+**Email:** demo@staywise.app  
+**Password:** demo1234
+
+This account is for demonstration purposes only and has limited access.
+
 ## Features ✨
 
 📊 Dashboard analytics with charts (bookings, sales, occupancy)
